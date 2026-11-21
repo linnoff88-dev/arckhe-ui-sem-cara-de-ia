@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* A marca fictícia "Oficina Norte": verde-petróleo, cantos firmes, título com serifa. */
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.98 0.01 95);
+  --foreground: oklch(0.24 0.03 200);
+  --primary: oklch(0.42 0.09 195);
+  --primary-foreground: oklch(0.98 0.01 95);
+}

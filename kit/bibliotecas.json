@@ -1,0 +1,18 @@
+{
+  "conferido_em": "2026-11-18",
+  "como": "Licença lida no repositório oficial pela API do GitHub; descrição lida no site oficial. Confira de novo antes de instalar.",
+  "bibliotecas": [
+    {"nome": "shadcn/ui", "tipo": "base", "serve_para": "Botões, campos, janelas e menus cujo código entra no seu projeto.", "site": "https://ui.shadcn.com", "repo": "https://github.com/shadcn-ui/ui", "licenca": "MIT"},
+    {"nome": "Base UI", "tipo": "base", "serve_para": "Peças sem visual, com teclado e acessibilidade prontos, para você estilizar.", "site": "https://base-ui.com", "repo": "https://github.com/mui/base-ui", "licenca": "MIT"},
+    {"nome": "Radix Primitives", "tipo": "base", "serve_para": "Peças sem visual e acessíveis para montar seu próprio sistema.", "site": "https://www.radix-ui.com", "repo": "https://github.com/radix-ui/primitives", "licenca": "MIT"},
+    {"nome": "Sonner", "tipo": "especialista", "serve_para": "Avisos na tela (toasts) que empilham e somem do jeito certo.", "site": "https://sonner.emilkowal.ski", "repo": "https://github.com/emilkowalski/sonner", "licenca": "MIT"},
+    {"nome": "Vaul", "tipo": "especialista", "serve_para": "Gaveta que sobe da parte de baixo e acompanha o dedo.", "site": "https://vaul.emilkowal.ski", "repo": "https://github.com/emilkowalski/vaul", "licenca": "MIT"},
+    {"nome": "cmdk", "tipo": "especialista", "serve_para": "Menu de comandos com busca, aberto pelo teclado.", "site": "https://cmdk.paco.me", "repo": "https://github.com/dip/cmdk", "licenca": "MIT"},
+    {"nome": "NumberFlow", "tipo": "especialista", "serve_para": "Números que mudam com animação, como preço e contador.", "site": "https://number-flow.barvian.me", "repo": "https://github.com/barvian/number-flow", "licenca": "MIT"},
+    {"nome": "Beautiful UI", "tipo": "design", "serve_para": "Peças para produtos com agentes: texto em streaming, estado pensando e cartão de aprovação.", "site": "https://beautifului.dev", "repo": null, "licenca": "MIT (informada no site)"},
+    {"nome": "Magic UI", "tipo": "design", "serve_para": "Componentes animados para páginas de apresentação.", "site": "https://magicui.design", "repo": "https://github.com/magicuidesign/magicui", "licenca": "MIT"},
+    {"nome": "Aceternity UI", "tipo": "design", "serve_para": "Efeitos e blocos para landing pages. Tem parte paga: confira a licença da peça.", "site": "https://ui.aceternity.com", "repo": null, "licenca": "confira no site"},
+    {"nome": "21st.dev", "tipo": "design", "serve_para": "Marketplace com peças de vários autores. Tem planos pagos: confira a licença da peça.", "site": "https://21st.dev", "repo": null, "licenca": "varia por peça"}
+  ],
+  "skill_externa": {"nome": "pick-ui-library", "serve_para": "Skill que indica uma biblioteca para cada tarefa de interface.", "repo": "https://github.com/emilkowalski/skills", "licenca": "MIT"}
+}

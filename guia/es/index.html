@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI sin cara de IA: descubre qué delata que la IA hizo tu pantalla</title>
+<meta name="description" content="Kit gratis para Claude Code y Codex: encuentra en tu proyecto qué delata que la interfaz se hizo en automático y escribe el pedido para corregirlo.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/ui-sem-cara-de-ia/guia/">
+<link rel="alternate" hreflang="en" href="https://inematds.github.io/ui-sem-cara-de-ia/guia/en/">
+<link rel="alternate" hreflang="es" href="https://inematds.github.io/ui-sem-cara-de-ia/guia/es/">
+<meta property="og:title" content="UI sin cara de IA: descubre qué delata que la IA hizo tu pantalla">
+<meta property="og:description" content="Kit gratis para Claude Code y Codex: encuentra en tu proyecto qué delata que la interfaz se hizo en automático y escribe el pedido para corregirlo.">
+<meta property="og:image" content="https://inematds.github.io/ui-sem-cara-de-ia/guia/assets/banner-es.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --fill:#FACC15; --tint:rgba(250,204,21,.12); --ok:#7CE0C6; --bad:#F0918A;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --fill:#FACC15; --tint:#FEF9C3; --ok:#0E6B55; --bad:#A83426;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  body.light pre .k{color:#f0c070}
+  body.light nav{background:rgba(246,247,249,.85)}
+  body.light .amb{color:var(--txt);background:linear-gradient(transparent 55%,#FACC15 55%)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  body.light main a:not(.btn),body.light footer a{color:#854d0e;text-decoration:underline;text-decoration-color:#FACC15;text-decoration-thickness:3px}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  p code,li code,td code{font-size:.9em;background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:.05em .35em}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb);white-space:nowrap}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:var(--tint)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--fill);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  nav .links a.sec{white-space:nowrap}
+  @media(max-width:1360px){nav .links a.opt{display:none}}
+  @media(max-width:860px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.15rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:44ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:66ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .card p+p{margin-top:.6em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0;margin:.4em 0 0}
+  pre .c{color:#7d7d8a} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:28px}
+  .step>div{min-width:0}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--fill);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .5em}
+  .quem{display:inline-block;font-family:Sora;font-size:.75rem;letter-spacing:.06em;color:var(--txt);background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:.1em .7em;margin-left:.5em;vertical-align:middle;font-weight:600}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
+  /* números */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  @media(max-width:720px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat b{display:block;font:800 clamp(1.9rem,4vw,2.6rem)/1.05 Sora,sans-serif;letter-spacing:-.02em;color:var(--amb)}
+  body.light .stat b{color:var(--txt)}
+  .stat span{display:block;color:var(--mut);font-size:.93rem;margin-top:.5em}
+  .fonte{font-size:.86rem;color:var(--mut);margin-top:14px;max-width:80ch}
+  /* trocas */
+  .troca{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:26px 0;border-top:1px solid var(--line)}
+  .troca:first-of-type{border-top:none}
+  .troca .n{width:64px;height:64px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;font:800 1.6rem Sora,sans-serif;color:var(--amb)}
+  body.light .troca .n{color:var(--txt);background:var(--fill);border-color:var(--fill)}
+  .troca h3{font-size:1.3rem;margin-bottom:.35em}
+  .troca p{margin:.35em 0;max-width:72ch}
+  .troca .ex{margin-top:.8em;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--fill);border-radius:10px;padding:12px 16px;font-size:.95rem;color:var(--mut);max-width:76ch}
+  .troca .ex b{color:var(--txt)}
+  @media(max-width:540px){.troca{grid-template-columns:1fr}}
+  /* três finais */
+  .vs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;max-width:900px}
+  @media(max-width:720px){.vs{grid-template-columns:1fr}}
+  .vs div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.93rem}
+  .vs strong{display:block;font-family:Sora;margin-bottom:.25em}
+  .vs .r{display:block;margin-top:.5em;font-weight:600}
+  .vs .r.bad{color:var(--bad)} .vs .r.ok{color:var(--ok)}
+  .card ul{margin:8px 0 0;padding-left:20px}.card li{margin:5px 0}
+  /* prova */
+  .prova{background:var(--card);border:1px solid var(--amb);border-radius:16px;padding:26px 26px 22px;margin-top:6px}
+  body.light .prova{border-color:#EAB308}
+  .tl{list-style:none;margin:0;padding:0;counter-reset:t}
+  .tl li{position:relative;padding:0 0 18px 48px;counter-increment:t}
+  .tl li::before{content:counter(t);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:10px;background:var(--fill);color:#1a1206;font:800 .95rem/32px Sora,sans-serif;text-align:center}
+  .tl li::after{content:"";position:absolute;left:15px;top:36px;bottom:4px;width:2px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .tl b{font-family:Sora}
+  blockquote{margin:6px 0 0;padding:14px 18px;border-left:3px solid var(--fill);background:var(--bg2);border-radius:0 10px 10px 0;font-size:1.02rem}
+  .prova .rod{font-size:.86rem;color:var(--mut);margin-top:14px}
+  /* parte técnica */
+  .techhead{background:var(--bg2);border-top:3px solid var(--fill);padding:58px 0 8px}
+  .techhead h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em;margin:.3em 0 0}
+  .techhead .sub{color:var(--mut);margin:.6em 0 1.2em;max-width:66ch}
+  .techzone{background:var(--bg2)}
+  .techzone .card{background:var(--card)}
+  .tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+  .tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-family:Sora;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  @media(max-width:600px){.tbl thead{display:none} .tbl tr{display:block;border-bottom:1px solid var(--line);padding:6px 0} .tbl tr:last-child{border-bottom:none} .tbl td{display:block;border:none;padding:4px 14px}}
+  section[id]{scroll-margin-top:96px}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">🔎</span> UI sin cara de IA</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#explicado">Lo que ganas</a>
+    <a class="sec" href="#dia">En tu día</a>
+    <a class="sec opt" href="#como">Cómo funciona</a>
+    <a class="sec" href="#comecar">Cómo empezar</a>
+    <a class="sec opt" href="#base">Base</a>
+    <a class="sec" href="#prova">La prueba</a>
+    <span class="lang"><a href="../">PT</a><a href="../en/">EN</a><a class="on" href="./">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">🌙</button>
+    <a class="btn" href="https://github.com/inematds/ui-sem-cara-de-ia" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Kit gratis para quienes crean con Claude Code o Codex</span>
+      <h1>Descubre qué delata que la IA hizo tu pantalla <span class="amb">antes que tu cliente</span></h1>
+      <p class="lead">El sistema parece listo, pero quien no usa mouse no puede completar la acción, y la pantalla se ve igual que todas las demás. UI sin cara de IA (UI es la interfaz: la parte del sistema que la persona ve y usa) encuentra estos puntos en el proyecto y prepara el pedido para corregirlos con tu IA.</p>
+      <div class="cta">
+        <a class="btn" href="#explicado">Lo que ganas</a>
+        <a class="btn ghost" href="#comecar">Cómo empezar</a>
+      </div>
+    </div>
+    <figure><img src="../assets/banner-es.jpg" alt="UI sin cara de IA: encuentra en el código qué delata tu interfaz"></figure>
+  </div>
+</header>
+
+<main>
+<section id="resumo" class="resumo"><div class="wrap">
+  <span class="chip">En pocas palabras</span>
+  <p><strong>UI sin cara de IA es un verificador gratis para sitios y aplicaciones hechos con IA.</strong> Lee el proyecto, señala lo que parece automático o falla al usarlo y prepara el texto para corregirlo y pegarlo en Claude Code o Codex. Es para quienes crean con estas herramientas, aunque no sean especialistas en diseño. No cambia ningún archivo: tu IA hace las correcciones después de que le des el sí.</p>
+  <figure style="margin:22px 0 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img style="display:block;width:100%;height:auto" src="../assets/banner-grade-es.jpg" alt="UI sin cara de IA: el problema, tu día, el verificador, el pedido listo, la prueba y cómo empezar"></figure>
+</div></section>
+
+<section id="explicado"><div class="wrap">
+  <span class="chip">Lo que ganas</span>
+  <h2>Antes y después del <span class="amb">kit</span></h2>
+  <div class="grid g2">
+    <div class="card"><h3>😩 Sin el kit</h3><p>Pides «que se vea más bonito» y la IA cambia lo que está a la vista. Lo que de verdad estorba sigue ahí: el aviso desaparece antes de que lo leas, el cajón (el panel que se desliza desde un lado o desde abajo de la pantalla) no sigue tu dedo, el botón no responde al teclado.</p><p>Quien lo descubre es tu cliente.</p></div>
+    <div class="card"><h3>😌 Con el kit</h3><p>Recibes una lista con el archivo y la línea de cada punto, organizada en tres grupos.</p><p>Copias el pedido listo en tu IA. Revisa cada punto, corrige los problemas reales y te dice cuáles descartó.</p></div>
+  </div>
+  <div class="grid g3" style="margin-top:16px">
+    <div class="card"><h3>🎯 Un pedido específico</h3><p>Dejas atrás el «mejora el diseño». Ahora dices: «en este archivo, en esta línea, cambia este aviso por un componente listo para usar».</p></div>
+    <div class="card"><h3>🧩 El componente adecuado</h3><p>La IA deja de inventar avisos, cajones y menús. Usa bibliotecas, que son colecciones de componentes listos para esos usos.</p></div>
+    <div class="card"><h3>🪪 Con tu estilo</h3><p>El color, la tipografía y las esquinas dejan de ser los que venían por defecto.</p></div>
+  </div>
+</div></section>
+
+<section id="video"><div class="wrap">
+  <span class="chip">En video</span>
+  <h2>Mira el kit en acción (3 min)</h2>
+  <div style="position:relative;aspect-ratio:16/9;margin-top:24px"><iframe src="https://www.youtube-nocookie.com/embed/blXnqoGoltM" title="Mira el kit en acción (3 min)" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:16px" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</div></section>
+
+<section id="dia"><div class="wrap">
+  <span class="chip">En tu día a día</span>
+  <h2>Cómo cambia tu <span class="amb">día</span></h2>
+  <p class="sub">Tres situaciones comunes para quienes entregan pantallas hechas con IA.</p>
+  <div class="grid g3">
+    <div class="card"><h3>📨 Antes de enviar el enlace</h3><p><strong>Hoy:</strong> miras la pantalla en la computadora, te gusta y la envías.</p><p><strong>Con el kit:</strong> ves antes qué podría fallar y pides que lo corrijan.</p></div>
+    <div class="card"><h3>🎨 Cuando la pantalla parece genérica</h3><p><strong>Hoy:</strong> pides otra versión y recibes una que se ve igual.</p><p><strong>Con el kit:</strong> sabes si el problema está en el color, la tipografía o las esquinas.</p></div>
+    <div class="card"><h3>✨ Cuando la página brilla demasiado</h3><p><strong>Hoy:</strong> cada pedido suma otro efecto.</p><p><strong>Con el kit:</strong> la página tiene un solo elemento destacado y la atención se centra en él.</p></div>
+  </div>
+  <div class="prova" style="margin-top:22px">
+    <ol class="tl">
+      <li><b>Terminas la pantalla</b><br><span class="mut">y le pides a tu IA que ejecute el verificador.</span></li>
+      <li><b>Aparece la lista</b><br><span class="mut">con el lugar exacto de cada problema.</span></li>
+      <li><b>La IA revisa y corrige</b><br><span class="mut">y abres la pantalla en tu celular para dar la última palabra.</span></li>
+    </ol>
+  </div>
+</div></section>
+
+<section id="como"><div class="wrap">
+  <span class="chip">Cómo funciona</span>
+  <h2>Tres preguntas, <span class="amb">sin palabras complicadas</span></h2>
+  <p class="sub">Funciona como una persona que recorre una obra con una tabla y anota lo que ve sin romper ninguna pared.</p>
+  <div class="grid g3">
+    <div class="card"><h3>🪪 ¿Tiene tu estilo?</h3><p>Busca colores, tipografías y esquinas que vienen por defecto. Es como abrir una tienda y dejar el letrero del proveedor en la puerta. Esta parte solo funciona en proyectos que guardan esas elecciones en un tema: un archivo con los colores y las medidas del sistema. Tu IA revisa si tu proyecto tiene uno.</p></div>
+    <div class="card"><h3>🖐️ ¿Funciona para todos?</h3><p>Busca lo que parece estar bien en una imagen, pero falla al usarlo: avisos improvisados, cajones que no se arrastran y botones a los que no se llega con el teclado.</p></div>
+    <div class="card"><h3>🎆 ¿Hay demasiados elementos destacados?</h3><p>Cuenta los efectos de cada página. Si todos gritan en la sala, nadie se escucha.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>⚠️ Lo que el kit no promete</h3><ul>
+    <li>Lee el proyecto, pero no puede ver la pantalla. Por eso, algunas alertas pueden ser falsas.</li>
+    <li>Que no haya alertas no significa que el diseño sea bueno. La última palabra es tuya, con la pantalla abierta.</li>
+    <li>No mide las ventas ni la satisfacción de quienes usan el sistema.</li>
+  </ul></div>
+</div></section>
+
+<section id="comecar"><div class="wrap">
+  <span class="chip">Cómo empezar</span>
+  <h2>Pídele a tu IA que <span class="amb">revise el proyecto</span></h2>
+  <p class="sub">No tienes que descargar ni ejecutar nada a mano. La IA obtiene el kit, revisa tu proyecto y explica el resultado. Si tu computadora necesita algún programa para hacerlo, te avisa antes.</p>
+  <div class="grid g3">
+    <div class="card"><h3>1. Abre la IA en tu proyecto</h3><p>Claude Code o Codex, en la carpeta donde trabajas.</p></div>
+    <div class="card"><h3>2. Pega el pedido de abajo</h3><p>Guarda el kit fuera de tu proyecto, lo revisa y te explica el resultado en español sencillo.</p></div>
+    <div class="card"><h3>3. Di que sí a lo que te parezca bien</h3><p>Usa el pedido de corrección del kit y cambia solo lo que apruebes.</p></div>
+  </div>
+  <div class="pedido" style="margin-top:20px;position:relative">
+<pre id="pedidoTxt" style="white-space:pre-wrap">Descarga el kit "UI sin cara de IA" de https://github.com/inematds/ui-sem-cara-de-ia en una carpeta temporal, fuera de este proyecto, y lee el README del kit.
+Usa el verificador del kit en este proyecto, sin cambiar nada. Si falta algún programa, avísame antes de instalarlo.
+Revisa cada alerta y respóndeme en español de América Latina sencillo:
+1. ¿Este proyecto es del tipo que el kit puede leer?
+2. ¿Qué alertas son reales y cuáles son falsas?
+3. ¿Qué es lo que más dificulta el uso de mi sistema y por dónde conviene empezar?
+No cambies ningún archivo del proyecto. Muéstrame el plan y espera a que te diga que sí.
+Después de que te diga que sí, genera el pedido de corrección del kit y corrige solo lo que aprobé.</pre>
+    <button class="btn" id="copiarPedido" style="margin-top:10px">Copiar el pedido</button>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>🛠️ ¿Prefieres hacerlo a mano?</h3><p>Encontrarás los detalles técnicos en la página del proyecto en GitHub.</p><p><a class="btn ghost" href="https://github.com/inematds/ui-sem-cara-de-ia/blob/main/README.es.md#instalación-técnica" target="_blank" rel="noopener">Ver la instalación técnica</a></p></div>
+</div></section>
+
+<section id="base"><div class="wrap">
+  <span class="chip">De dónde viene</span>
+  <h2>Los componentes recomendados son <span class="amb">públicos y verificados</span></h2>
+  <p class="sub">El kit no inventa nada. Señala colecciones de componentes listos, llamadas bibliotecas, cada una con su sitio oficial. Verificamos todo el 18/11/2026.</p>
+  <div class="grid g3">
+    <div class="card"><h3>🧱 Base</h3><p>Colecciones de botones, campos y ventanas: <a href="https://ui.shadcn.com" target="_blank" rel="noopener">shadcn/ui</a>, <a href="https://base-ui.com" target="_blank" rel="noopener">Base UI</a> y <a href="https://www.radix-ui.com" target="_blank" rel="noopener">Radix</a>.</p></div>
+    <div class="card"><h3>🔧 Especialistas</h3><p>Un componente para cada caso: <a href="https://sonner.emilkowal.ski" target="_blank" rel="noopener">Sonner</a> para avisos, <a href="https://vaul.emilkowal.ski" target="_blank" rel="noopener">Vaul</a> para cajones, <a href="https://cmdk.paco.me" target="_blank" rel="noopener">cmdk</a> para el menú de comandos (un cuadro de búsqueda que se abre con el teclado) y <a href="https://number-flow.barvian.me" target="_blank" rel="noopener">NumberFlow</a> para números.</p></div>
+    <div class="card"><h3>✨ Para destacar</h3><p><a href="https://beautifului.dev" target="_blank" rel="noopener">Beautiful UI</a>, <a href="https://magicui.design" target="_blank" rel="noopener">Magic UI</a>, <a href="https://ui.aceternity.com" target="_blank" rel="noopener">Aceternity UI</a> y <a href="https://21st.dev" target="_blank" rel="noopener">21st.dev</a>. Algunas tienen partes pagas: revisa la licencia de cada componente.</p></div>
+  </div>
+</div></section>
+
+<section id="prova"><div class="wrap">
+  <span class="chip">La prueba</span>
+  <h2>Lo ejecutamos en 34 carpetas propias: <span class="amb">24 mostraron alertas</span></h2>
+  <p class="sub">Eran carpetas de sitios y aplicaciones de nuestras propias cuentas, todos hechos con React y Tailwind, dos tecnologías comunes para crear pantallas. La revisión fue el 18/11/2026. Algunas carpetas pueden ser versiones del mismo proyecto.</p>
+  <div class="grid g3">
+    <div class="card"><h3>103 archivos</h3><p>con botones que no se pueden usar con el teclado. Fue la alerta más común.</p></div>
+    <div class="card"><h3>11 carpetas</h3><p>con colores, tipografías o esquinas predeterminados.</p></div>
+    <div class="card"><h3>0 alertas</h3><p>por exceso de efectos en esas carpetas. Medir también muestra dónde no hace falta cambiar nada.</p></div>
+  </div>
+  <div class="prova" style="margin-top:22px">
+    <ol class="tl">
+      <li><b>Un formulario de ejemplo con problemas: 8 alertas.</b><br><span class="mut">Escribimos este ejemplo para mostrar las reglas.</span></li>
+      <li><b>El mismo formulario, con su marca, los componentes adecuados y un elemento destacado: 0 alertas.</b><br><span class="mut">El código de ambos está en el proyecto.</span></li>
+    </ol>
+    <p class="rod">Una alerta no confirma que haya un problema: solo revisamos a mano una muestra y no medimos cuántas alertas eran correctas. <a href="https://github.com/inematds/ui-sem-cara-de-ia/blob/main/FATOS.md" target="_blank" rel="noopener">Consulta las mediciones y las fuentes</a>.</p>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <span class="chip">Preguntas frecuentes</span>
+  <h2>Antes de <span class="amb">empezar</span></h2>
+  <div class="grid g2">
+    <div class="card"><h3>¿Necesito saber programar?</h3><p>No para empezar. Tu IA ejecuta el verificador y te explica el resultado. Pero el kit lee proyectos de código, así que necesitas tener uno.</p></div>
+    <div class="card"><h3>¿Cambia mi proyecto?</h3><p>No. Solo lo lee. Los cambios vienen después, a través de tu IA y con tu aprobación.</p></div>
+    <div class="card"><h3>¿Cómo sé si mi proyecto sirve?</h3><p>Tu IA lo averigua en el primer paso. El kit se hizo para los tipos de sitios y aplicaciones que Claude Code y Codex suelen crear. En otros proyectos, algunas alertas no se aplican. No puede leer pantallas de sistemas como WordPress, y te lo avisa en vez de decirte que todo está bien.</p></div>
+    <div class="card"><h3>¿Cuánto cuesta?</h3><p>Nada. El kit y esta guía son gratis. Algunas bibliotecas para destacar partes de la pantalla tienen funciones pagas, y tú decides si las usas.</p></div>
+  </div>
+  <p class="fonte" style="margin-top:22px">Y tú, ¿qué alerta crees que aparecerá primero en tu proyecto? Gratis en inema.club, directo en internet.</p>
+</div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">Claude Code</div><div class="pill">Codex</div><div class="pill">Gratis</div><div class="pill">Código abierto</div>
+    <p style="margin-top:18px">UI sin cara de IA · gratis en inema.club, directo en internet ·
+      <a href="https://github.com/inematds/ui-sem-cara-de-ia">inematds/ui-sem-cara-de-ia</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY='ui-sem-cara-de-ia-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+  (function(){
+    var bt=document.getElementById('copiarPedido'), tx=document.getElementById('pedidoTxt');
+    if(!bt||!tx) return;
+    bt.addEventListener('click',function(){
+      try{ navigator.clipboard.writeText(tx.textContent).then(function(){ bt.textContent='Copiado ✓'; setTimeout(function(){bt.textContent='Copiar el pedido';},2000); }); }catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
