@@ -1,4 +1,4 @@
-﻿# UI sem cara de IA
+ï»¿# UI sem cara de IA
 
 <div align="center">
   <img src="capa/logo.svg" alt="Arckhé AI" height="48" />
@@ -8,33 +8,33 @@
 
 [![UI sem cara de IA](guia/assets/banner.jpg)](https://inematds.github.io/ui-sem-cara-de-ia/guia/)
 
-**ðŸ‡§ðŸ‡· [PortuguÃªs](README.md) Â· ðŸ‡ºðŸ‡¸ [English](README.en.md) Â· ðŸ‡ªðŸ‡¸ [EspaÃ±ol](README.es.md)**
+**ê°Å¸â¡Â§ê°Å¸â¡Â· [PortuguêÂªs](README.md) êÂ· ê°Å¸â¡Âºê°Å¸â¡Â¸ [English](README.en.md) êÂ· ê°Å¸â¡Âªê°Å¸â¡Â¸ [EspaêÂ±ol](README.es.md)**
 
-## O que Ã©
+## O que êÂ©
 
-UI sem cara de IA Ã© um kit gratuito para quem cria sites e aplicativos com Claude Code ou Codex. Ele traz um verificador que lÃª o seu projeto e aponta o que entrega o trabalho automÃ¡tico: cor e cantos de fÃ¡brica, aviso feito Ã  mÃ£o, botÃ£o que o teclado nÃ£o alcanÃ§a e excesso de efeitos. Depois, ele escreve o pedido de correÃ§Ã£o para vocÃª colar na sua IA. Precisa de Python 3 para rodar. NÃ£o instala nada no seu projeto e nÃ£o altera nenhum arquivo.
+UI sem cara de IA êÂ© um kit gratuito para quem cria sites e aplicativos com Claude Code ou Codex. Ele traz um verificador que lêÂª o seu projeto e aponta o que entrega o trabalho automêÂ¡tico: cor e cantos de fêÂ¡brica, aviso feito êÂ  mêÂ£o, botêÂ£o que o teclado nêÂ£o alcanêÂ§a e excesso de efeitos. Depois, ele escreve o pedido de correêÂ§êÂ£o para vocêÂª colar na sua IA. Precisa de Python 3 para rodar. NêÂ£o instala nada no seu projeto e nêÂ£o altera nenhum arquivo.
 
-## ðŸ“– Guia de uso
+## ê°Å¸ââ Guia de uso
 
 Guia completo: **https://inematds.github.io/ui-sem-cara-de-ia/guia/**
 
-[ðŸŽ¬ VÃ­deo: veja o kit em aÃ§Ã£o](https://www.youtube.com/watch?v=blXnqoGoltM)
+[ê°Å¸Å½Â¬ VêÂ­deo: veja o kit em aêÂ§êÂ£o](https://www.youtube.com/watch?v=blXnqoGoltM)
 
-## PeÃ§a para a sua IA analisar
+## PeêÂ§a para a sua IA analisar
 
 ```text
-Baixe o kit https://github.com/inematds/ui-sem-cara-de-ia numa pasta temporÃ¡ria, fora do meu projeto.
+Baixe o kit https://github.com/inematds/ui-sem-cara-de-ia numa pasta temporêÂ¡ria, fora do meu projeto.
 Leia o README e rode o verificador kit/checar_ui.py apontando para a pasta do meu projeto.
 Se faltar Python 3.9 ou mais novo, me avise antes de instalar qualquer coisa.
-Confira cada alerta no cÃ³digo e me diga, em portuguÃªs simples, quais sÃ£o reais, quais sÃ£o falsos
-e por onde vale comeÃ§ar. NÃ£o mude nenhum arquivo do projeto antes do meu sim.
+Confira cada alerta no cêÂ³digo e me diga, em portuguêÂªs simples, quais sêÂ£o reais, quais sêÂ£o falsos
+e por onde vale comeêÂ§ar. NêÂ£o mude nenhum arquivo do projeto antes do meu sim.
 ```
 
 ---
 
-## InstalaÃ§Ã£o tÃ©cnica
+## InstalaêÂ§êÂ£o têÂ©cnica
 
-Requisito: Python 3.9 ou mais novo. O kit usa sÃ³ a biblioteca padrÃ£o.
+Requisito: Python 3.9 ou mais novo. O kit usa sêÂ³ a biblioteca padrêÂ£o.
 
 ```bash
 git clone https://github.com/inematds/ui-sem-cara-de-ia
@@ -46,60 +46,60 @@ python3 kit/checar_ui.py /caminho/do/projeto
 python3 kit/checar_ui.py /caminho/do/projeto --pedido > pedido.txt
 ```
 
-Substitua `/caminho/do/projeto` pela pasta real que deseja analisar. Mantenha o kit fora do seu projeto. CÃ³digos de saÃ­da: `0` sem alertas, `1` com alertas, `2` erro de uso ou nenhum arquivo de interface encontrado. Use `--json` para integrar com outras ferramentas.
+Substitua `/caminho/do/projeto` pela pasta real que deseja analisar. Mantenha o kit fora do seu projeto. CêÂ³digos de saêÂ­da: `0` sem alertas, `1` com alertas, `2` erro de uso ou nenhum arquivo de interface encontrado. Use `--json` para integrar com outras ferramentas.
 
 ### O que ele procura
 
 | Grupo | Alerta | Como detecta |
 |---|---|---|
-| Identidade | Cantos de fÃ¡brica | `--radius` igual a `0.625rem` ou `0.5rem` num tema com `--primary` |
-| Identidade | Cor sem marca | `--primary` igual a um padrÃ£o do shadcn/ui ou cinza em OKLCH, HSL ou hexadecimal |
-| Identidade | Fonte de sempre | SÃ³ Geist ou Inter (next/font, @fontsource ou CSS), num projeto com esse tema |
-| Comportamento | Aviso feito Ã  mÃ£o | Estado ou componente de toast sem biblioteca de avisos no `package.json` da pasta ou acima dela |
-| Comportamento | Gaveta sem arrasto | Componente de gaveta sem eventos de toque ou ponteiro e sem biblioteca prÃ³pria |
-| Comportamento | Menu sem setas | Menu de comandos sem `ArrowDown` e sem biblioteca prÃ³pria |
-| Comportamento | Clique sem teclado | `div`, `span`, `p`, `li`, `tr`, `td`, `img`, seÃ§Ãµes, tÃ­tulos, `motion.*` ou `a` sem `href`, com clique (React, Vue ou Svelte) e sem `tabIndex` que permita foco |
-| Excesso | Muitos destaques | Mais de um efeito conhecido em pÃ¡gina de rota, `App` ou HTML, olhando dois nÃ­veis de importaÃ§Ã£o |
+| Identidade | Cantos de fêÂ¡brica | `--radius` igual a `0.625rem` ou `0.5rem` num tema com `--primary` |
+| Identidade | Cor sem marca | `--primary` igual a um padrêÂ£o do shadcn/ui ou cinza em OKLCH, HSL ou hexadecimal |
+| Identidade | Fonte de sempre | SêÂ³ Geist ou Inter (next/font, @fontsource ou CSS), num projeto com esse tema |
+| Comportamento | Aviso feito êÂ  mêÂ£o | Estado ou componente de toast sem biblioteca de avisos no `package.json` da pasta ou acima dela |
+| Comportamento | Gaveta sem arrasto | Componente de gaveta sem eventos de toque ou ponteiro e sem biblioteca prêÂ³pria |
+| Comportamento | Menu sem setas | Menu de comandos sem `ArrowDown` e sem biblioteca prêÂ³pria |
+| Comportamento | Clique sem teclado | `div`, `span`, `p`, `li`, `tr`, `td`, `img`, seêÂ§êÂµes, têÂ­tulos, `motion.*` ou `a` sem `href`, com clique (React, Vue ou Svelte) e sem `tabIndex` que permita foco |
+| Excesso | Muitos destaques | Mais de um efeito conhecido em pêÂ¡gina de rota, `App` ou HTML, olhando dois nêÂ­veis de importaêÂ§êÂ£o |
 
-SÃ£o alertas de leitura de cÃ³digo. O verificador nÃ£o abre a tela, nÃ£o mede contraste e nÃ£o julga se o design Ã© bom. A regra de clique verifica se o elemento recebe foco; nÃ£o confirma que Enter ou EspaÃ§o executam a aÃ§Ã£o. Um alerta pode ser falso, e uma tela sem alertas ainda pode estar ruim.
+SêÂ£o alertas de leitura de cêÂ³digo. O verificador nêÂ£o abre a tela, nêÂ£o mede contraste e nêÂ£o julga se o design êÂ© bom. A regra de clique verifica se o elemento recebe foco; nêÂ£o confirma que Enter ou EspaêÂ§o executam a aêÂ§êÂ£o. Um alerta pode ser falso, e uma tela sem alertas ainda pode estar ruim.
 
-Limites: ignora arquivos de teste, comentÃ¡rios, `components/ui`, pastas geradas e, em `public/`, tudo que nÃ£o seja HTML. Elementos com `{...props}` nÃ£o sÃ£o acusados, porque as propriedades podem trazer o foco. `svg`, `i`, `label`, `ul`, `nav` e componentes prÃ³prios com clique nÃ£o sÃ£o analisados. Efeitos fora da lista interna nÃ£o sÃ£o contados. Cliques ligados por `addEventListener` nÃ£o sÃ£o vistos. Identidade sÃ³ Ã© analisada quando o projeto usa um tema com `--primary` e `--radius`, como o do shadcn/ui; cores direto em classes do Tailwind, temas dentro de `<style>` e fontes carregadas por link nÃ£o entram. Rode na raiz do projeto.
+Limites: ignora arquivos de teste, comentêÂ¡rios, `components/ui`, pastas geradas e, em `public/`, tudo que nêÂ£o seja HTML. Elementos com `{...props}` nêÂ£o sêÂ£o acusados, porque as propriedades podem trazer o foco. `svg`, `i`, `label`, `ul`, `nav` e componentes prêÂ³prios com clique nêÂ£o sêÂ£o analisados. Efeitos fora da lista interna nêÂ£o sêÂ£o contados. Cliques ligados por `addEventListener` nêÂ£o sêÂ£o vistos. Identidade sêÂ³ êÂ© analisada quando o projeto usa um tema com `--primary` e `--radius`, como o do shadcn/ui; cores direto em classes do Tailwind, temas dentro de `<style>` e fontes carregadas por link nêÂ£o entram. Rode na raiz do projeto.
 
-Cobertura: ele sÃ³ lÃª telas em HTML, JSX, TSX, Vue, Svelte, Astro e MDX. Sem nenhuma delas, sai com cÃ³digo `2` e nÃ£o aprova. Se encontrar telas em PHP, EJS, Blade, Pug, Twig ou parecidas ao lado das que sabe ler, avisa que o resultado nÃ£o vale para elas.
+Cobertura: ele sêÂ³ lêÂª telas em HTML, JSX, TSX, Vue, Svelte, Astro e MDX. Sem nenhuma delas, sai com cêÂ³digo `2` e nêÂ£o aprova. Se encontrar telas em PHP, EJS, Blade, Pug, Twig ou parecidas ao lado das que sabe ler, avisa que o resultado nêÂ£o vale para elas.
 
 ### Arquivos
 
-| Caminho | Para quÃª |
+| Caminho | Para quêÂª |
 |---|---|
 | `kit/checar_ui.py` | Verificador |
-| `kit/medir_pastas.py` | Total de vÃ¡rios projetos, sem nomes |
+| `kit/medir_pastas.py` | Total de vêÂ¡rios projetos, sem nomes |
 | `kit/PEDIDOS.md` | Pedidos prontos para a IA |
-| `kit/bibliotecas.json` | Bibliotecas conferidas, com site e licenÃ§a |
+| `kit/bibliotecas.json` | Bibliotecas conferidas, com site e licenêÂ§a |
 | `kit/skill/ui-sem-cara-de-ia/` | Skill para Claude Code: copie para `.claude/skills/` |
 | `exemplo/antes`, `exemplo/depois` | Mesmo cadastro, com e sem os problemas |
-| `FATOS.md` | Fontes e mediÃ§Ãµes |
+| `FATOS.md` | Fontes e mediêÂ§êÂµes |
 
-## O processo, do inÃ­cio ao fim
+## O processo, do inêÂ­cio ao fim
 
 | # | Passo | Comando | Quem faz |
 |---|---|---|---|
-| 1 | Baixar o kit | `git clone https://github.com/inematds/ui-sem-cara-de-ia` | ðŸ§  vocÃª |
-| 2 | Conferir que funciona | `python3 kit/testes/run.py` | âš™ï¸ script |
-| 3 | Verificar o projeto | `python3 kit/checar_ui.py <pasta>` | âš™ï¸ script |
-| 4 | Gerar o pedido | `python3 kit/checar_ui.py <pasta> --pedido > pedido.txt` | âš™ï¸ script |
-| 5 | Corrigir | Cole `pedido.txt` no Claude Code ou no Codex | ðŸ¤– sua IA |
-| 6 | Olhar a tela | Teste no celular e sÃ³ com o teclado | ðŸ§  vocÃª |
-| 7 | Verificar de novo | `python3 kit/checar_ui.py <pasta>` | âš™ï¸ script |
+| 1 | Baixar o kit | `git clone https://github.com/inematds/ui-sem-cara-de-ia` | ê°Å¸Â§Â  vocêÂª |
+| 2 | Conferir que funciona | `python3 kit/testes/run.py` | ê¢Å¡â¢ê¯Â¸Â script |
+| 3 | Verificar o projeto | `python3 kit/checar_ui.py <pasta>` | ê¢Å¡â¢ê¯Â¸Â script |
+| 4 | Gerar o pedido | `python3 kit/checar_ui.py <pasta> --pedido > pedido.txt` | ê¢Å¡â¢ê¯Â¸Â script |
+| 5 | Corrigir | Cole `pedido.txt` no Claude Code ou no Codex | ê°Å¸Â¤â sua IA |
+| 6 | Olhar a tela | Teste no celular e sêÂ³ com o teclado | ê°Å¸Â§Â  vocêÂª |
+| 7 | Verificar de novo | `python3 kit/checar_ui.py <pasta>` | ê¢Å¡â¢ê¯Â¸Â script |
 
-## Veja tambÃ©m
+## Veja tambêÂ©m
 
-[Kit Design com IA](https://github.com/inematds/kit-design-ia): skills para definir a direÃ§Ã£o visual. Este kit confere o resultado no cÃ³digo.
+[Kit Design com IA](https://github.com/inematds/kit-design-ia): skills para definir a direêÂ§êÂ£o visual. Este kit confere o resultado no cêÂ³digo.
 
-## LicenÃ§a
+## LicenêÂ§a
 
-MIT para o cÃ³digo e os textos deste kit. As bibliotecas citadas tÃªm licenÃ§as prÃ³prias, listadas em `kit/bibliotecas.json`. Este kit Ã© independente e nÃ£o tem vÃ­nculo com elas.
+MIT para o cêÂ³digo e os textos deste kit. As bibliotecas citadas têÂªm licenêÂ§as prêÂ³prias, listadas em `kit/bibliotecas.json`. Este kit êÂ© independente e nêÂ£o tem vêÂ­nculo com elas.
 
-GrÃ¡tis no [INEMA.CLUB](https://inema.club).
+GrêÂ¡tis no [INEMA.CLUB](https://inema.club).
 
 ---
 

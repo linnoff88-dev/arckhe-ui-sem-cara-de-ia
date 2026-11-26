@@ -11,13 +11,13 @@ Use shadcn/ui como base e aplique essas escolhas no tema antes de criar qualquer
 Instale pelo caminho oficial, com o código dentro do projeto. Se faltar algo da marca, pergunte.
 ```
 
-## 2. Comportamento: não reinventar peça difícil
+## 2. Comportamento: nêo reinventar peça difícil
 
 ```text
-Não construa do zero aviso, gaveta nem menu de comandos.
+Nêo construa do zero aviso, gaveta nem menu de comandos.
 Use Sonner para avisos, Vaul para gavetas e cmdk para o menu de comandos, só onde a tela precisar.
 Depois teste: vários avisos seguidos, gaveta arrastada no celular e o menu usado só com o teclado.
-Mostre o que testou e o que não conseguiu testar.
+Mostre o que testou e o que nêo conseguiu testar.
 ```
 
 ## 3. Página: um destaque só
@@ -35,4 +35,4 @@ Baixe o kit numa pasta separada do projeto e, dentro da pasta do kit, rode:
 python3 kit/checar_ui.py /caminho/do/seu/projeto --pedido
 ```
 
-Cole o texto gerado na sua IA. Ele manda conferir cada item antes de mudar, porque o verificador lê o código e não vê a tela.
+Cole o texto gerado na sua IA. Ele manda conferir cada item antes de mudar, porque o verificador lê o código e nêo vê a tela.

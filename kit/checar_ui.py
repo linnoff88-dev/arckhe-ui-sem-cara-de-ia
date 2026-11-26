@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """checar_ui.py: aponta onde a interface de um projeto entrega que foi feita no automático.
 
-Só lê arquivos. Não instala nada, não usa rede e não altera o projeto.
+Só lê arquivos. Nêo instala nada, nêo usa rede e nêo altera o projeto.
 Uso:  python3 kit/checar_ui.py <pasta> [--json] [--pedido]
 Saída: 0 = nenhum alerta · 1 = há alertas · 2 = erro de uso ou nada que ele saiba ler.
 
-Cada achado é um ALERTA para conferir, não uma sentença: a regra lê texto, não vê a tela.
+Cada achado é um ALERTA para conferir, nêo uma sentença: a regra lê texto, nêo vê a tela.
 """
 from __future__ import annotations
 
@@ -22,9 +22,9 @@ PASTAS_IGNORADAS = {
     "dist", "build", "out", "coverage", "vendor", "__pycache__", "venv", "env", "site-packages",
 }
 EXT_CODIGO = {".tsx", ".jsx", ".ts", ".js", ".vue", ".svelte", ".html", ".astro", ".mdx"}
-# Arquivos que desenham tela. Só .js ou .ts não prova que a interface foi lida.
+# Arquivos que desenham tela. Só .js ou .ts nêo prova que a interface foi lida.
 EXT_TELA = {".tsx", ".jsx", ".vue", ".svelte", ".html", ".astro", ".mdx"}
-# Telas em tecnologias que o verificador não entende: ele avisa em vez de aprovar.
+# Telas em tecnologias que o verificador nêo entende: ele avisa em vez de aprovar.
 EXT_TELA_NAO_LIDA = {".php", ".ejs", ".erb", ".hbs", ".handlebars", ".pug", ".twig", ".cshtml", ".razor",
                      ".jinja", ".jinja2", ".j2", ".liquid", ".njk", ".mustache"}
 EXT_CSS = {".css", ".scss"}
@@ -50,7 +50,7 @@ LIBS_DRAWER = {"vaul", "vaul-vue", "vaul-svelte", "@mui/material", "antd", "@cha
                "@heroui/react", "@nextui-org/react", "daisyui", "bootstrap", "react-bootstrap", "vuetify",
                "element-plus", "primereact", "primevue", "flowbite", "flowbite-react", "quasar", "@nuxt/ui"}
 LIBS_COMANDO = {"cmdk", "cmdk-sv", "vue-command-palette", "kbar", "ninja-keys", "@headlessui/react", "@heroui/react"}
-# Biblioteca sugerida conforme a tecnologia do projeto. Sem tecnologia conhecida, o pedido não crava um nome.
+# Biblioteca sugerida conforme a tecnologia do projeto. Sem tecnologia conhecida, o pedido nêo crava um nome.
 PECAS = {
     "toast": {"react": "Sonner", "vue": "vue-sonner", "svelte": "svelte-sonner"},
     "gaveta": {"react": "Vaul", "vue": "vaul-vue", "svelte": "vaul-svelte"},
@@ -64,7 +64,7 @@ EFEITOS = (
     "TextGenerateEffect TypewriterEffect CardContainer Globe DotPattern FlickeringGrid Ripple "
     "MagicCard ShineBorder Boxes GlowingEffect"
 ).split()
-# Estes nomes também são ícones comuns: só contam se vierem claramente de um componente de efeito.
+# Estes nomes também sêo ícones comuns: só contam se vierem claramente de um componente de efeito.
 AMBIGUOS = {"Sparkles", "Globe", "Boxes", "Lamp", "Ripple", "Confetti"}
 FAMILIAS = {"meteors": "meteor", "auroratext": "aurora", "aurorabackground": "aurora"}
 
@@ -75,7 +75,7 @@ RE_FONTE_EFEITO = re.compile(r"magicui|magic-ui|aceternity|efeito|effect|sparkle
 RE_IMPORT_NOMES = re.compile(r"import\s+(?:([\w$]+)\s*,?\s*)?(?:\{([^}]*)\})?\s*from\s*[\"']([^\"']+)[\"']")
 RE_IMPORT = re.compile(r"""(?:from\s+|import\s+)["']((?:\.{1,2}/|@/|~/)[^"']+)["']""")
 
-# Procuram onde a peça é CRIADA, não onde ela só é importada, usada ou fechada.
+# Procuram onde a peça é CRIADA, nêo onde ela só é importada, usada ou fechada.
 RE_TOAST = re.compile(r"\bconst\s*\[\s*\w+\s*,\s*set\w*Toast\w*\s*\]|\b(?:function|const)\s+(?:showToast|addToast|ToastContainer|Toast)\b"
                       r"|class(?:Name)?=[\"'][^\"']*\btoast\b")
 RE_DRAWER = re.compile(r"\b(?:function|const|class)\s+(?:[A-Z]\w*)?(?:Drawer|BottomSheet)\b|class(?:Name)?=[\"'][^\"']*\b(?:drawer|bottom-sheet)\b")
@@ -86,7 +86,7 @@ RE_SETAS = re.compile(r"ArrowDown")
 
 RE_TAG_CLIQUE = re.compile(r"<(div|span|p|li|tr|td|img|section|article|header|footer|main|aside|h[1-6]|a|motion\.(?!button\b)\w+)(?=[\s>/])")
 RE_TEM_CLIQUE = re.compile(r"(?:\bon[Cc]lick\s*=|@click\b|\bv-on:click\b|\bon:click\b)")
-# Clique que só impede a propagação não é uma ação: serve para o clique não vazar para o elemento de fora.
+# Clique que só impede a propagaçêo nêo é uma açêo: serve para o clique nêo vazar para o elemento de fora.
 RE_SO_PROPAGACAO = re.compile(r"on[Cc]lick\s*=\s*\{\s*\(?\s*\w*\s*(?::\s*[\w.<>]+\s*)?\)?\s*=>\s*\{?\s*\w+\.stopPropagation\(\)\s*;?\s*\}?\s*\}"
                               r"|@click\.stop(?!\s*=)|v-on:click\.stop(?!\s*=)")
 RE_JSX = re.compile(r"(?:return\s*\(?|=>\s*\(?)\s*<[A-Za-z>]")
@@ -98,7 +98,7 @@ def achado(grupo, regra, arquivo, linha, alerta, pedido):
 
 
 def familia(nome: str) -> str:
-    """Meteors e animate-meteor são o mesmo efeito: contam uma vez."""
+    """Meteors e animate-meteor sêo o mesmo efeito: contam uma vez."""
     chave = nome.lower().removeprefix("animate-")
     return FAMILIAS.get(chave, chave)
 
@@ -119,7 +119,7 @@ def ler(p: Path) -> str:
         return ""
 
 
-# Textos entre aspas vêm primeiro: accept="image/*" não é começo de comentário.
+# Textos entre aspas vêm primeiro: accept="image/*" nêo é começo de comentário.
 RE_TEXTO_OU_COMENTARIO = re.compile(
     r"\"(?:[^\"\\\n]|\\.)*\"|'(?:[^'\\\n]|\\.)*'|`(?:[^`\\]|\\.)*`"
     r"|(?P<c>/\*.*?\*/|<!--.*?-->|(?<![:\\])//[^\n]*)", re.S)
@@ -167,7 +167,7 @@ def varrer(raiz: Path):
             if item.is_symlink():
                 continue
             if item.is_dir():
-                # Pastas com ponto são de ferramentas: caches, ambientes e cópias de trabalho.
+                # Pastas com ponto sêo de ferramentas: caches, ambientes e cópias de trabalho.
                 if item.name not in PASTAS_IGNORADAS and not item.name.startswith("."):
                     pilha.append(item)
             elif item.is_file():
@@ -197,7 +197,7 @@ def mapa_dependencias(arquivos) -> dict:
 
 
 def deps_de(p: Path, raiz: Path, mapa: dict) -> set:
-    """Só valem o package.json da pasta do arquivo e os acima dela: um app não silencia o outro."""
+    """Só valem o package.json da pasta do arquivo e os acima dela: um app nêo silencia o outro."""
     deps, atual = set(), p.parent
     while True:
         deps |= mapa.get(atual, set())
@@ -214,7 +214,7 @@ def deps_de(p: Path, raiz: Path, mapa: dict) -> set:
 
 
 def eh_peca_copiada(rel: str) -> bool:
-    """components/ui é onde o shadcn copia as peças: não é código feito à mão pelo projeto."""
+    """components/ui é onde o shadcn copia as peças: nêo é código feito à mêo pelo projeto."""
     return "components/ui/" in rel or "/ui/src/components/" in rel
 
 
@@ -348,14 +348,14 @@ def checar_comportamento(raiz, codigo, mapa):
             m = RE_TOAST.search(t)
             if m:
                 saida.append(achado("comportamento", "toast-a-mao", rel, linha_de(t, m.start()),
-                                    "Aviso (toast) feito à mão: costuma empilhar mal ou sumir antes da leitura.",
-                                    pedido_peca("toast", deps, "Troque este aviso pelo {}, seguindo a instalação oficial.",
+                                    "Aviso (toast) feito à mêo: costuma empilhar mal ou sumir antes da leitura.",
+                                    pedido_peca("toast", deps, "Troque este aviso pelo {}, seguindo a instalaçêo oficial.",
                                                 "Troque este aviso por uma biblioteca pronta, adequada à tecnologia deste projeto.")))
         if not deps & LIBS_DRAWER and not com_bootstrap:
             m = RE_DRAWER.search(t)
             if m and not RE_ARRASTO.search(t):
                 saida.append(achado("comportamento", "gaveta-sem-arrasto", rel, linha_de(t, m.start()),
-                                    "Gaveta (drawer) sem nenhum tratamento de arrasto: no celular ela não segue o dedo.",
+                                    "Gaveta (drawer) sem nenhum tratamento de arrasto: no celular ela nêo segue o dedo.",
                                     pedido_peca("gaveta", deps, "Use o {} nesta gaveta e teste arrastar para fechar no celular.",
                                                 "Use uma gaveta pronta, adequada à tecnologia deste projeto, e teste arrastar no celular.")))
         if not deps & LIBS_COMANDO:
@@ -369,10 +369,10 @@ def checar_comportamento(raiz, codigo, mapa):
         if linhas:
             n = len(linhas)
             onde = ", ".join(map(str, linhas[:12])) + ("…" if n > 12 else "")
-            texto = ("1 elemento clicável que o teclado não alcança." if n == 1
-                     else f"{n} elementos clicáveis que o teclado não alcança (linhas {onde}).")
+            texto = ("1 elemento clicável que o teclado nêo alcança." if n == 1
+                     else f"{n} elementos clicáveis que o teclado nêo alcança (linhas {onde}).")
             saida.append(achado("comportamento", "clique-sem-teclado", rel, linhas[0], texto,
-                                "Transforme estes elementos em <button> ou link, com foco visível. Se for só o fundo escuro de uma janela que já tem botão de fechar, pode manter."))
+                                "Transforme estes elementos em <button> ou link, com foco visível. Se for só o fundo escuro de uma janela que já tem botêo de fechar, pode manter."))
     return saida
 
 
@@ -441,7 +441,7 @@ def checar_excesso(raiz, codigo):
                     fila.append((c, sem_comentarios(ler(c)), nivel + 1))
         if len(efeitos) > 1:
             saida.append(achado("excesso", "muitos-destaques", rel, 1,
-                                f"{len(efeitos)} efeitos disputando atenção na mesma página: " + ", ".join(sorted(efeitos)) + ".",
+                                f"{len(efeitos)} efeitos disputando atençêo na mesma página: " + ", ".join(sorted(efeitos)) + ".",
                                 "Mantenha um único destaque nesta página e deixe o resto parado."))
     return saida
 
@@ -473,19 +473,19 @@ def analisar(raiz: Path) -> dict:
 TITULOS = {
     "identidade": "Identidade: parece com todos os outros",
     "comportamento": "Comportamento: bonito no print, falha no uso",
-    "excesso": "Excesso: tudo chama atenção, nada se destaca",
+    "excesso": "Excesso: tudo chama atençêo, nada se destaca",
 }
 
 
 def aviso_identidade(r: dict) -> str:
-    return "" if r["tema_encontrado"] else "Cor, fonte e cantos não foram avaliados: não achei um tema com --primary e --radius."
+    return "" if r["tema_encontrado"] else "Cor, fonte e cantos nêo foram avaliados: nêo achei um tema com --primary e --radius."
 
 
 def aviso_nao_lidas(r: dict) -> str:
     if not r["telas_nao_lidas"]:
         return ""
-    return (f"Atenção: {r['telas_nao_lidas']} arquivo(s) de tela não foram lidos, como "
-            + ", ".join(r["exemplos_nao_lidos"][:3]) + ". O resultado não vale para eles.")
+    return (f"Atençêo: {r['telas_nao_lidas']} arquivo(s) de tela nêo foram lidos, como "
+            + ", ".join(r["exemplos_nao_lidos"][:3]) + ". O resultado nêo vale para eles.")
 
 
 def texto_relatorio(r: dict) -> str:
@@ -493,7 +493,7 @@ def texto_relatorio(r: dict) -> str:
     linhas = [f"ui-sem-cara-de-ia {r['versao']} · {n} {'arquivo lido' if n == 1 else 'arquivos lidos'}, {r['telas_lidas']} de tela"]
     linhas += [a for a in (aviso_nao_lidas(r), aviso_identidade(r)) if a]
     if not r["total"]:
-        linhas.append("Nenhum alerta. Abra a tela mesmo assim: esta checagem lê o código, não vê o resultado.")
+        linhas.append("Nenhum alerta. Abra a tela mesmo assim: esta checagem lê o código, nêo vê o resultado.")
         return "\n".join(linhas)
     for g, titulo in TITULOS.items():
         itens = [a for a in r["achados"] if a["grupo"] == g]
@@ -501,22 +501,22 @@ def texto_relatorio(r: dict) -> str:
             linhas += ["", f"{titulo} ({len(itens)})"]
             linhas += [f"  {a['arquivo']}:{a['linha']}  {a['alerta']}" for a in itens]
     nome = "alerta" if r["total"] == 1 else "alertas"
-    linhas += ["", f"Total: {r['total']} {nome}. Use --pedido para gerar o texto de correção."]
+    linhas += ["", f"Total: {r['total']} {nome}. Use --pedido para gerar o texto de correçêo."]
     return "\n".join(linhas)
 
 
 def texto_pedido(r: dict) -> str:
     if not r["total"]:
-        return " ".join(x for x in ("Nenhum alerta: não há correção a pedir.", aviso_nao_lidas(r)) if x)
+        return " ".join(x for x in ("Nenhum alerta: nêo há correçêo a pedir.", aviso_nao_lidas(r)) if x)
     linhas = ["Corrija a interface deste projeto. Antes de mudar, confira cada item: ele veio de uma checagem",
               "automática do código e pode ser falso. Diga quais descartou e por quê.", ""]
     for i, a in enumerate(r["achados"], 1):
         linhas.append(f"{i}. {a['arquivo']}:{a['linha']}. {a['alerta']} {a['pedido']}")
     if aviso_nao_lidas(r):
         linhas += ["", aviso_nao_lidas(r)]
-    linhas += ["", "Regras: se o projeto já usa outra biblioteca para a mesma função, mantenha a dele.",
+    linhas += ["", "Regras: se o projeto já usa outra biblioteca para a mesma funçêo, mantenha a dele.",
                "Instale o que faltar pelo caminho oficial, com o código dentro do projeto.",
-               "Se a minha marca (cor, fonte, cantos) não estiver definida, pergunte antes de escolher.",
+               "Se a minha marca (cor, fonte, cantos) nêo estiver definida, pergunte antes de escolher.",
                "No fim, abra a tela, teste no celular e só com o teclado, e me mostre o que testou."]
     return "\n".join(linhas)
 
@@ -525,19 +525,19 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Aponta onde a interface entrega que foi feita no automático.")
     ap.add_argument("pasta")
     ap.add_argument("--json", action="store_true", help="saída em JSON")
-    ap.add_argument("--pedido", action="store_true", help="imprime o pedido de correção para a IA")
+    ap.add_argument("--pedido", action="store_true", help="imprime o pedido de correçêo para a IA")
     a = ap.parse_args(argv)
     raiz = Path(a.pasta).expanduser()
     if not raiz.is_dir():
-        print(f"Pasta não encontrada: {raiz}", file=sys.stderr)
+        print(f"Pasta nêo encontrada: {raiz}", file=sys.stderr)
         return 2
     if eh_copia_do_kit(raiz):
         print("Esta é a pasta do próprio kit. Aponte para a pasta do seu projeto.", file=sys.stderr)
         return 2
     r = analisar(raiz)
     if not r["telas_lidas"]:
-        print("Não encontrei telas que eu saiba ler (HTML, JSX, TSX, JavaScript com JSX, Vue, Svelte, Astro ou MDX). "
-              "Isso não é aprovação: confira a pasta. " + aviso_nao_lidas(r), file=sys.stderr)
+        print("Nêo encontrei telas que eu saiba ler (HTML, JSX, TSX, JavaScript com JSX, Vue, Svelte, Astro ou MDX). "
+              "Isso nêo é aprovaçêo: confira a pasta. " + aviso_nao_lidas(r), file=sys.stderr)
         return 2
     if a.json:
         print(json.dumps(r, ensure_ascii=False, indent=2))

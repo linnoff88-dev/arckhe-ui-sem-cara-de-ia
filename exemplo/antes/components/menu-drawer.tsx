@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-// Abre e fecha, mas não acompanha o dedo.
+// Abre e fecha, mas nêo acompanha o dedo.
 export function MenuDrawer() {
   const [aberta, setAberta] = useState(false);
   return (

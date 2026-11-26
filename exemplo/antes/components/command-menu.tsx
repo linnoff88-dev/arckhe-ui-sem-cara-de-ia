@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-// Abre com Ctrl+K, mas as setas não andam pela lista.
+// Abre com Ctrl+K, mas as setas nêo andam pela lista.
 export function CommandMenu() {
   const [aberto, setAberto] = useState(false);
   useEffect(() => {

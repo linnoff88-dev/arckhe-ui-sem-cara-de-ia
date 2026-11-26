@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """medir_pastas.py: roda o checar_ui em cada projeto React + Tailwind de uma pasta e mostra só o total.
 
-Não imprime nome de projeto nem de arquivo, então o resultado pode ser mostrado em público.
+Nêo imprime nome de projeto nem de arquivo, entêo o resultado pode ser mostrado em público.
 Uso: python3 kit/medir_pastas.py ~/projetos [--dono "minha-conta|outra-conta"]
 Com --dono, só entram as pastas cujo git remote origin contém um desses nomes.
 """
@@ -39,7 +39,7 @@ def main() -> int:
     a = ap.parse_args()
     raiz = Path(a.pasta).expanduser()
     if not raiz.is_dir():
-        print(f"Pasta não encontrada: {raiz}", file=sys.stderr)
+        print(f"Pasta nêo encontrada: {raiz}", file=sys.stderr)
         return 2
     regras, grupos = collections.Counter(), collections.Counter()
     pastas = com_sinal = 0
