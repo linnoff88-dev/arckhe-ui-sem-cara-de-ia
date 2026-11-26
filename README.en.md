@@ -1,6 +1,6 @@
 # UI Without the AI Look
 
-[![UI Without the AI Look](guia/assets/banner-en.jpg)](https://inematds.github.io/ui-sem-cara-de-ia/guia/en/)
+[![UI Without the AI Look](guia/assets/banner-en.jpg)](https://linnoff88-dev.github.io/arckhe-/guia/en/)
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
@@ -10,14 +10,14 @@ UI Without the AI Look is a free toolkit for people who build websites and apps 
 
 ## 📖 User guide
 
-Full guide: **https://inematds.github.io/ui-sem-cara-de-ia/guia/en/**
+Full guide: **https://linnoff88-dev.github.io/arckhe-/guia/en/**
 
 [🎬 Video: see the kit in action](https://www.youtube.com/watch?v=blXnqoGoltM)
 
 ## Ask your AI to analyze it
 
 ```text
-Download the toolkit from https://github.com/inematds/ui-sem-cara-de-ia into a temporary folder outside my project.
+Download the toolkit from https://github.com/linnoff88-dev/ui-sem-cara-de-ia into a temporary folder outside my project.
 Read the README and run the checker kit/checar_ui.py on my project folder.
 If Python 3.9 or newer is missing, tell me before installing anything.
 Check each warning in the code and tell me in simple English which ones are real, which ones are false
@@ -31,7 +31,7 @@ alarms, and where it makes sense to start. Don’t change any project files befo
 Requirement: Python 3.9 or newer. The toolkit uses only the standard library.
 
 ```bash
-git clone https://github.com/inematds/ui-sem-cara-de-ia
+git clone https://github.com/linnoff88-dev/ui-sem-cara-de-ia
 cd ui-sem-cara-de-ia
 python3 kit/testes/run.py                      # 119 tests, no network
 python3 kit/checar_ui.py exemplo/antes         # 8 warnings
@@ -77,7 +77,7 @@ Coverage: it reads screens in HTML, JSX, TSX, Vue, Svelte, Astro, and MDX only. 
 
 | # | Step | Command | Who does it |
 |---|---|---|---|
-| 1 | Download the toolkit | `git clone https://github.com/inematds/ui-sem-cara-de-ia` | 🧠 you |
+| 1 | Download the toolkit | `git clone https://github.com/linnoff88-dev/ui-sem-cara-de-ia` | 🧠 you |
 | 2 | Check that it works | `python3 kit/testes/run.py` | ⚙️ script |
 | 3 | Check the project | `python3 kit/checar_ui.py <pasta>` | ⚙️ script |
 | 4 | Create the request | `python3 kit/checar_ui.py <pasta> --pedido > pedido.txt` | ⚙️ script |
@@ -87,10 +87,10 @@ Coverage: it reads screens in HTML, JSX, TSX, Vue, Svelte, Astro, and MDX only. 
 
 ## See also
 
-[AI Design Kit](https://github.com/inematds/kit-design-ia): skills for setting the visual direction. This toolkit checks the result in the code.
+[AI Design Kit](https://github.com/linnoff88-dev/kit-design-ia): skills for setting the visual direction. This toolkit checks the result in the code.
 
 ## License
 
 MIT for the code and text in this toolkit. The libraries mentioned have their own licenses, listed in `kit/bibliotecas.json`. This toolkit is independent and has no connection to them.
 
-Free at [INEMA.CLUB](https://inema.club).
+Free at [ARCKHÉ AI](https://ARCKHÉ AI).

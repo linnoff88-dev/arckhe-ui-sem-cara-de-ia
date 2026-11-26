@@ -1,6 +1,6 @@
 # UI sin cara de IA
 
-[![UI sin cara de IA](guia/assets/banner-es.jpg)](https://inematds.github.io/ui-sem-cara-de-ia/guia/es/)
+[![UI sin cara de IA](guia/assets/banner-es.jpg)](https://linnoff88-dev.github.io/arckhe-/guia/es/)
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
@@ -10,14 +10,14 @@ UI sin cara de IA es un kit gratuito para quienes crean sitios web y aplicacione
 
 ## 📖 Guía de uso
 
-Guía completa: **https://inematds.github.io/ui-sem-cara-de-ia/guia/es/**
+Guía completa: **https://linnoff88-dev.github.io/arckhe-/guia/es/**
 
 [🎬 Video: mira el kit en acción](https://www.youtube.com/watch?v=blXnqoGoltM)
 
 ## Pídele a tu IA que lo analice
 
 ```text
-Descarga el kit https://github.com/inematds/ui-sem-cara-de-ia en una carpeta temporal, fuera de mi proyecto.
+Descarga el kit https://github.com/linnoff88-dev/ui-sem-cara-de-ia en una carpeta temporal, fuera de mi proyecto.
 Lee el README y ejecuta el verificador kit/checar_ui.py indicando la carpeta de mi proyecto.
 Si falta Python 3.9 o una versión más nueva, avísame antes de instalar cualquier cosa.
 Revisa cada alerta en el código y dime, en español latinoamericano sencillo, cuáles son reales, cuáles son falsas
@@ -31,7 +31,7 @@ y por dónde conviene empezar. No cambies ningún archivo del proyecto antes de 
 Requisito: Python 3.9 o una versión más nueva. El kit solo usa la biblioteca estándar.
 
 ```bash
-git clone https://github.com/inematds/ui-sem-cara-de-ia
+git clone https://github.com/linnoff88-dev/ui-sem-cara-de-ia
 cd ui-sem-cara-de-ia
 python3 kit/testes/run.py                      # 119 pruebas, sin conexión
 python3 kit/checar_ui.py exemplo/antes         # 8 alertas
@@ -77,7 +77,7 @@ Cobertura: solo lee pantallas en HTML, JSX, TSX, Vue, Svelte, Astro y MDX. Si no
 
 | # | Paso | Comando | Quién lo hace |
 |---|---|---|---|
-| 1 | Descargar el kit | `git clone https://github.com/inematds/ui-sem-cara-de-ia` | 🧠 tú |
+| 1 | Descargar el kit | `git clone https://github.com/linnoff88-dev/ui-sem-cara-de-ia` | 🧠 tú |
 | 2 | Comprobar que funciona | `python3 kit/testes/run.py` | ⚙️ script |
 | 3 | Revisar el proyecto | `python3 kit/checar_ui.py <pasta>` | ⚙️ script |
 | 4 | Preparar la solicitud | `python3 kit/checar_ui.py <pasta> --pedido > pedido.txt` | ⚙️ script |
@@ -87,10 +87,10 @@ Cobertura: solo lee pantallas en HTML, JSX, TSX, Vue, Svelte, Astro y MDX. Si no
 
 ## También puedes ver
 
-[Kit Design con IA](https://github.com/inematds/kit-design-ia): skills para definir la dirección visual. Este kit revisa el resultado en el código.
+[Kit Design con IA](https://github.com/linnoff88-dev/kit-design-ia): skills para definir la dirección visual. Este kit revisa el resultado en el código.
 
 ## Licencia
 
 MIT para el código y los textos de este kit. Las bibliotecas mencionadas tienen sus propias licencias, listadas en `kit/bibliotecas.json`. Este kit es independiente y no tiene relación con ellas.
 
-Gratis en [INEMA.CLUB](https://inema.club).
+Gratis en [ARCKHÉ AI](https://ARCKHÉ AI).

@@ -6,7 +6,7 @@
 </div>
 
 
-[![UI sem cara de IA](guia/assets/banner.jpg)](https://inematds.github.io/ui-sem-cara-de-ia/guia/)
+[![UI sem cara de IA](guia/assets/banner.jpg)](https://linnoff88-dev.github.io/arckhe-/guia/)
 
 **ê°Å¸â¡Â§ê°Å¸â¡Â· [PortuguêÂªs](README.md) êÂ· ê°Å¸â¡Âºê°Å¸â¡Â¸ [English](README.en.md) êÂ· ê°Å¸â¡Âªê°Å¸â¡Â¸ [EspaêÂ±ol](README.es.md)**
 
@@ -16,14 +16,14 @@ UI sem cara de IA êÂ© um kit gratuito para quem cria sites e aplicativos co
 
 ## ê°Å¸ââ Guia de uso
 
-Guia completo: **https://inematds.github.io/ui-sem-cara-de-ia/guia/**
+Guia completo: **https://linnoff88-dev.github.io/arckhe-/guia/**
 
 [ê°Å¸Å½Â¬ VêÂ­deo: veja o kit em aêÂ§êÂ£o](https://www.youtube.com/watch?v=blXnqoGoltM)
 
 ## PeêÂ§a para a sua IA analisar
 
 ```text
-Baixe o kit https://github.com/inematds/ui-sem-cara-de-ia numa pasta temporêÂ¡ria, fora do meu projeto.
+Baixe o kit https://github.com/linnoff88-dev/ui-sem-cara-de-ia numa pasta temporêÂ¡ria, fora do meu projeto.
 Leia o README e rode o verificador kit/checar_ui.py apontando para a pasta do meu projeto.
 Se faltar Python 3.9 ou mais novo, me avise antes de instalar qualquer coisa.
 Confira cada alerta no cêÂ³digo e me diga, em portuguêÂªs simples, quais sêÂ£o reais, quais sêÂ£o falsos
@@ -37,7 +37,7 @@ e por onde vale comeêÂ§ar. NêÂ£o mude nenhum arquivo do projeto antes 
 Requisito: Python 3.9 ou mais novo. O kit usa sêÂ³ a biblioteca padrêÂ£o.
 
 ```bash
-git clone https://github.com/inematds/ui-sem-cara-de-ia
+git clone https://github.com/linnoff88-dev/ui-sem-cara-de-ia
 cd ui-sem-cara-de-ia
 python3 kit/testes/run.py                      # 119 testes, sem rede
 python3 kit/checar_ui.py exemplo/antes         # 8 alertas
@@ -83,7 +83,7 @@ Cobertura: ele sêÂ³ lêÂª telas em HTML, JSX, TSX, Vue, Svelte, Astro e
 
 | # | Passo | Comando | Quem faz |
 |---|---|---|---|
-| 1 | Baixar o kit | `git clone https://github.com/inematds/ui-sem-cara-de-ia` | ê°Å¸Â§Â  vocêÂª |
+| 1 | Baixar o kit | `git clone https://github.com/linnoff88-dev/ui-sem-cara-de-ia` | ê°Å¸Â§Â  vocêÂª |
 | 2 | Conferir que funciona | `python3 kit/testes/run.py` | ê¢Å¡â¢ê¯Â¸Â script |
 | 3 | Verificar o projeto | `python3 kit/checar_ui.py <pasta>` | ê¢Å¡â¢ê¯Â¸Â script |
 | 4 | Gerar o pedido | `python3 kit/checar_ui.py <pasta> --pedido > pedido.txt` | ê¢Å¡â¢ê¯Â¸Â script |
@@ -93,13 +93,13 @@ Cobertura: ele sêÂ³ lêÂª telas em HTML, JSX, TSX, Vue, Svelte, Astro e
 
 ## Veja tambêÂ©m
 
-[Kit Design com IA](https://github.com/inematds/kit-design-ia): skills para definir a direêÂ§êÂ£o visual. Este kit confere o resultado no cêÂ³digo.
+[Kit Design com IA](https://github.com/linnoff88-dev/kit-design-ia): skills para definir a direêÂ§êÂ£o visual. Este kit confere o resultado no cêÂ³digo.
 
 ## LicenêÂ§a
 
 MIT para o cêÂ³digo e os textos deste kit. As bibliotecas citadas têÂªm licenêÂ§as prêÂ³prias, listadas em `kit/bibliotecas.json`. Este kit êÂ© independente e nêÂ£o tem vêÂ­nculo com elas.
 
-GrêÂ¡tis no [INEMA.CLUB](https://inema.club).
+GrêÂ¡tis no [ARCKHÉ AI](https://ARCKHÉ AI).
 
 ---
 
